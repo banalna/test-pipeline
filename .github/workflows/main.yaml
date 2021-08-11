@@ -28,17 +28,19 @@ jobs:
   
     ############# Prepare #############
 
-#     - name: Install prereq and save build number
-#       id: build_info
-#       uses: pip-devops/actions/node/prepare@v1
+    - name: Install prereq and save build number
+      id: build_info
+      uses: pip-devops/actions/node/prepare@v1
+      env:
+        GIT_PRIVATE_KEY: ${{secrets.GIT_PRIVATE_KEY}}
 
-#     # ############# Build and test #############
+    # ############# Build and test #############
 
-#     - name: Build the component
-#       uses: pip-devops/actions/node/build@v1
+    - name: Build the component
+      uses: pip-devops/actions/node/build@v1
 
-#     - name: Test the component
-#       uses: pip-devops/actions/node/test@v1
+    - name: Test the component
+      uses: pip-devops/actions/node/test@v1
 
     ############# Release to dockerhub #############
 
