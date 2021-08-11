@@ -38,7 +38,7 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y powershell
 
-     - name: Release binary artifacts
+    - name: Release binary artifacts
       run: ./release.ps1
       env: 
         DOCKER_USER: ${{ secrets.DOCKER_USER }}
