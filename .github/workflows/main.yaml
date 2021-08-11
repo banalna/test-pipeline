@@ -8,24 +8,35 @@ on:
 
 jobs:
   Default:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     if: "!contains(github.event.head_commit.message, '[skip-ci]')"
     steps:
     - uses: actions/checkout@main
+    
+    ####
+    - name : set chmod
+      run: |
+        chmod u+x ./clean.ps1
+        chmod u+x ./build.ps1
+        chmod u+x ./test.ps1
+        chmod u+x ./tag.ps1
+        chmod u+x ./run.ps1
+        chmod u+x ./package.ps1
+        chmod u+x ./release.ps1
   
     ############# Prepare #############
 
-    # - name: Install prereq and save build number
-    #   id: build_info
-    #   uses: pip-devops/actions/node/prepare@v1
+    - name: Install prereq and save build number
+      id: build_info
+      uses: pip-devops/actions/node/prepare@v1
 
     # ############# Build and test #############
 
-    # - name: Build the component
-    #   uses: pip-devops/actions/node/build@v1
+    - name: Build the component
+      uses: pip-devops/actions/node/build@v1
 
-    # - name: Test the component
-    #   uses: pip-devops/actions/node/test@v1
+    - name: Test the component
+      uses: pip-devops/actions/node/test@v1
 
     ############# Release to dockerhub #############
 
@@ -37,9 +48,6 @@ jobs:
         sudo dpkg -i packages-microsoft-prod.deb
         sudo apt-get update
         sudo apt-get install -y powershell
-        
-    - name : set chmod
-      run: chmod u+x ./release.ps1
 
 
     - name: Release binary artifacts
