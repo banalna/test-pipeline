@@ -8,7 +8,7 @@ on:
 
 jobs:
   Default:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-16.04
     if: "!contains(github.event.head_commit.message, '[skip-ci]')"
     steps:
     - uses: actions/checkout@main
@@ -51,7 +51,7 @@ jobs:
 
 
     - name: Release binary artifacts
-      run: ./release.ps1
+      run: ./publish.ps1
       env: 
         DOCKER_USER: ${{ secrets.DOCKER_USER }}
         DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
