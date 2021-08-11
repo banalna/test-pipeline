@@ -37,6 +37,13 @@ jobs:
         sudo dpkg -i packages-microsoft-prod.deb
         sudo apt-get update
         sudo apt-get install -y powershell
+        
+    - name : update pwsh
+      run: |
+       sudo apt-get update
+       sudo snap remove powershell
+       sudo apt-get install powershell
+
 
     - name: Release binary artifacts
       run: ./release.ps1
