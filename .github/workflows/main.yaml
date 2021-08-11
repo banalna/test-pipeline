@@ -23,6 +23,8 @@ jobs:
         chmod u+x ./run.ps1
         chmod u+x ./package.ps1
         chmod u+x ./release.ps1
+        chmod u+x ./publish.ps1
+        
   
     ############# Prepare #############
 
