@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@main
     
-    ####
+    #### Set excecution premission ####
     - name : set chmod
       run: |
         chmod u+x ./clean.ps1
